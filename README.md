@@ -1,5 +1,26 @@
 # TELUS - Pizza
-A site for employee pizza orders :P
+
+We’re setting up a new pizza ordering system.
+ 
+We want users to go to our website and enter:
+·         Their name and phone number
+·         When they want their pizza (date and time)
+·         If they want “Delivery” or “Pickup”
+o   If it’s delivery they need to enter their address
+·         What toppings they want (users can select upto 3 toppings):
+o   Pepperoni
+o   Mushrooms
+o   Black Olives
+o   Pineapple
+ 
+Our employees would also need a web page that lists the user's name/phone number and when they want their food, sorted by when they want it, and selecting one of the items in the list would show a page with all the details.
+
+## Requirements
+
+1. Users are able to order pizza with restrictions
+- No more than 3 toppings
+2. Dashboard for information on orders and details of pizza. Some required information.
+- time of order, scheduled delivery time, date, order type, order status (ready/preparing), (delivery or pickup), delivery status (delivered/on the way), name, phone number, delivery address
 
 ## Resources
 - [mongodb integration](https://www.mongodb.com/compatibility/using-typescript-with-mongodb-tutorial)
