@@ -1,5 +1,9 @@
 # TELUS - Pizza
 
+A dockerized version of the application is running at https://telus.lefan.me
+
+## Description
+
 We’re setting up a new pizza ordering system.
  
 We want users to go to our website and enter:
@@ -23,7 +27,11 @@ Our employees would also need a web page that lists the user's name/phone number
 - time of order, scheduled delivery time, date, order type, order status (ready/preparing), (delivery or pickup), delivery status (delivered/on the way), name, phone number, delivery address
 
 ## Resources
-- [mongodb integration](https://www.mongodb.com/compatibility/using-typescript-with-mongodb-tutorial)
+- [mongodb integration example repo](https://github.com/mongodb-developer/mongodb-typescript-example)
+- [next.js form examples](https://github.com/vercel/next.js/tree/canary/examples/next-forms)
+- [next.js with mongoose](https://github.com/vercel/next.js/tree/canary/examples/with-mongodb-mongoose)
+- [next.js documentation/guides](https://nextjs.org/docs/guides/building-forms)
+- [](https://nextjs.org/docs/guides/building-forms)
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
