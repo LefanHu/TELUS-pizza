@@ -7,43 +7,35 @@ export default function IndexPage() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Next.js forms</title>
-        <meta name="description" content="Learn forms with Next.js" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>TELUS Pizza Orders</title>
+        <meta name="description" content="simple pizza ordering web-app" />
       </Head>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Forms with <a href="https://nextjs.org">Next.js!</a>
+          Order some PIZZA! Or view your orders.
         </h1>
 
-        <p className={styles.description}>
-          Get started by looking at{' '}
-          <code className={styles.code}>src/pages/OrderPizza.js</code> and{' '}
-          <code className={styles.code}>pages/no-js-form.js</code>
-        </p>
+        <div style={{width: 'vw', height: 'vh'}}>
+          <Image src="pizza.jpg" alt="pizza image" width={1050} height={850} unoptimized></Image>
+        </div>
+          
+        {/* <p className={styles.description}> */}
+        {/*   A simple web app by Lefan Hu */}
+        {/* </p> */}
 
         <div className={styles.grid}>
           <Link href="/OrderPizza" className={styles.card}>
-            <h2>Form with JavaScript &rarr;</h2>
-            <p>Learn to handle forms with JavaScript in Next.js.</p>
+            <h2>Place an order &rarr;</h2>
+            <p>Order a pizza using a form</p>
           </Link>
 
           <Link href="/no-js-form" className={styles.card}>
-            <h2>Form without JavaScript &rarr;</h2>
-            <p>Learn to handle forms without JavaScript in Next.js.</p>
+            <h2>View your orders &rarr;</h2>
+            <p>An interface for all placed pizza orders.</p>
           </Link>
         </div>
       </main>
-
-      <footer className={styles.footer}>
-        <a href="https://nextjs.org" target="_blank" rel="noopener noreferrer">
-          Built with Next.js | Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
   )
 }

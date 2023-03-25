@@ -1,4 +1,4 @@
-import Link from 'next/link'
+// import Link from 'next/link'
 import { FormEvent } from 'react'
 import styles from '../styles/Home.module.css'
 
@@ -7,15 +7,22 @@ export default function PageWithJSbasedForm() {
   const handleSubmit = async (event: FormEvent) => {
     // Stop the form from submitting and refreshing the page.
     event.preventDefault()
-
-    // Cast the event target to an html form
     const form = event.target as HTMLFormElement
 
     // Get data from the form.
     const data = {
-      first: form.first.value as string,
-      last: form.last.value as string,
+      name: form.customer.value as string,
+      phone: form.number.value as string,
+      pepperoni: form.pepperoni.checked as boolean,
+      mushrooms: form.mushrooms.checked as boolean,
+      pineapples: form.pineapples.checked as boolean,
+      olives: form.olives.checked as boolean,
+      delivery: form.delivery.checked as boolean,
+      address: form.address.value as string,
+      datetime: form.datetime.value as string
     }
+
+    // console.log(data)
 
     // Send the form data to our API and get a response.
     const response = await fetch('/api/order', {
@@ -32,26 +39,66 @@ export default function PageWithJSbasedForm() {
     // Get the response data from server as JSON.
     // If server returns the name submitted, that means the form works.
     const result = await response.json()
-    alert(`Is this your full name: ${result.data}`)
+    alert(`${result.data}`)
   }
   return (
     <div className="container">
       <h1 className={styles.title}>
-        Form <Link href="/">with</Link> JavaScript.
+        Pizza Order Form
+        {/* <Link href="/">with</Link> */}
       </h1>
 
       <p className={styles.description}>
-        Get started by looking at{' '}
-        <code className={styles.code}>pages/PizzaOrder.js</code>
+        Happiness starts with a slice
       </p>
 
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="first">First Name</label>
-        <input type="text" id="first" name="first" required />
-        <label htmlFor="last">Last Name</label>
-        <input type="text" id="last" name="last" required />
-        <button type="submit">Submit</button>
+      <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <div style={{ display: "inline-block", verticalAlign: "top" }}>
+          <label htmlFor="name">Name</label>
+          <input type="text" id="name" name="customer" required />
+          <label htmlFor="phone">Phone Number</label>
+          <input type="text" id="phone" name="number" required />
+        </div>
+
+        <fieldset style={{ marginBottom: "1rem", border: "none" }}>
+          <legend style={{ fontSize: "1.2rem", fontWeight: "bold", marginBottom: "0.5rem" }}>
+            Select up to 3 pizza toppings:
+          </legend>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <label htmlFor="pepperoni" style={{ marginRight: "1rem", fontSize: "1.2rem" }}>
+              Pepperoni
+            </label>
+            <input type="checkbox" id="pepperoni" name="pepperoni" value="pepperoni" style={{ marginRight: "1rem" }} />
+
+            <label htmlFor="mushrooms" style={{ marginRight: "1rem", fontSize: "1.2rem" }}>
+              Mushrooms
+            </label>
+            <input type="checkbox" id="mushrooms" name="toppings" value="mushrooms" style={{ marginRight: "1rem" }} />
+
+            <label htmlFor="olives" style={{ marginRight: "1rem", fontSize: "1.2rem" }}>
+              Black Olives
+            </label>
+            <input type="checkbox" id="olives" name="toppings" value="olives" />
+
+            <label htmlFor="pineapples" style={{ marginRight: "1rem", fontSize: "1.2rem" }}>
+              Pineapples (ew)
+            </label>
+            <input type="checkbox" id="pineapples" name="pineapples" value="pineapples" />
+          </div>
+        </fieldset>
+
+        <label htmlFor="delivery">Delivery?</label>
+        <input type="checkbox" id="delivery" name="delivery" />
+
+        <label htmlFor="address">Delivery Address</label>
+        <input type="text" id="address" name="address" required />
+        <label htmlFor="datetime">Scheduled For</label>
+        <input type="datetime-local" id="datetime" name="datetime" required />
+
+
+
+        <button type="submit">Place Order</button>
       </form>
-    </div>
+    </div >
   )
 }
