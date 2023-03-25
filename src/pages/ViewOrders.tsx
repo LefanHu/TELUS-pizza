@@ -27,7 +27,8 @@ export default function ViewOrdersPage() {
     })
 
     // Get the response data from server as JSON.
-    const orders = JSON.parse(await response.json())
+    const orders_raw = await response.json()
+    const orders = JSON.parse(orders_raw.data)
     // alert(`here's your orders ${orders.data} or just one of them: ${orders.data.placedOrders[0]}`)
 
     // test display
