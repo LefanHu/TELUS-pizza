@@ -16,10 +16,10 @@ export default function IndexPage() {
           Order some PIZZA! Or view your orders.
         </h1>
 
-        <div style={{width: 'vw', height: 'vh'}}>
+        <div style={{ width: 'vw', height: 'vh' }}>
           <Image src="pizza.jpg" alt="pizza image" width={1050} height={850} unoptimized></Image>
         </div>
-          
+
         {/* <p className={styles.description}> */}
         {/*   A simple web app by Lefan Hu */}
         {/* </p> */}
@@ -27,11 +27,16 @@ export default function IndexPage() {
         <div className={styles.grid}>
           <Link href="/OrderPizza" className={styles.card}>
             <h2>Place an order &rarr;</h2>
-            <p>Order a pizza using a form</p>
+            <p>Order a pizza using a form.</p>
           </Link>
 
           <Link href="/ViewOrders" className={styles.card}>
             <h2>View your orders &rarr;</h2>
+            <p>An interface for customers to see their placed orders.</p>
+          </Link>
+
+          <Link href="/EmployeeInterface" className={styles.card}>
+            <h2>What our employees see &rarr;</h2>
             <p>An interface for all placed pizza orders.</p>
           </Link>
         </div>
