@@ -1,8 +1,11 @@
 // import Link from 'next/link'
-import { FormEvent } from 'react'
+import { FormEvent, useState } from 'react'
 import styles from '../styles/Home.module.css'
 
 export default function ViewOrdersPage() {
+  const [ordersData, setData] = useState(null)
+
+
   // Handle the submit event on form submit.
   const handleSubmitForm = async (event: FormEvent) => {
     // Stop the form from submitting and refreshing the page.
@@ -24,9 +27,11 @@ export default function ViewOrdersPage() {
     })
 
     // Get the response data from server as JSON.
-    const orders = await response.json()
-    console.log(JSON.parse(orders.data))
+    const orders = JSON.parse(await response.json())
     // alert(`here's your orders ${orders.data} or just one of them: ${orders.data.placedOrders[0]}`)
+
+    // test display
+    setData(orders)
   }
   return (
     <div className="container">
@@ -45,6 +50,13 @@ export default function ViewOrdersPage() {
 
         <button type="submit">View Orders</button>
       </form>
+
+      {ordersData && (
+        <div>
+          <h2>Orders:</h2>
+          <p>{JSON.stringify(ordersData)}</p>
+        </div>
+      )}
     </div >
   )
 }
