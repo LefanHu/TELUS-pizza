@@ -30,7 +30,7 @@ export default function IndexPage() {
             <p>Order a pizza using a form</p>
           </Link>
 
-          <Link href="/no-js-form" className={styles.card}>
+          <Link href="/ViewOrders" className={styles.card}>
             <h2>View your orders &rarr;</h2>
             <p>An interface for all placed pizza orders.</p>
           </Link>

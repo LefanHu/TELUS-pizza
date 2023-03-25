@@ -2,7 +2,7 @@
 import { FormEvent } from 'react'
 import styles from '../styles/Home.module.css'
 
-export default function PageWithJSbasedForm() {
+export default function OrderPizzaPage() {
   // Handle the submit event on form submit.
   const handleSubmit = async (event: FormEvent) => {
     // Stop the form from submitting and refreshing the page.
@@ -37,7 +37,6 @@ export default function PageWithJSbasedForm() {
     })
 
     // Get the response data from server as JSON.
-    // If server returns the name submitted, that means the form works.
     const result = await response.json()
     alert(`${result.data}`)
   }

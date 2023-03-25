@@ -15,7 +15,7 @@ export default async function handler(
 ) {
   const { method } = req
   const order = req.body
-  console.log('body: ', order)
+  // console.log('body: ', order)
 
   // form validation
   // more than 3 toppings
@@ -64,9 +64,8 @@ export default async function handler(
       }
     )
 
-
     console.log(placedOrder)
-    console.log(customer)
+    // console.log(customer)
     res.json({ data: "Order successfully placed! Thanks for ordering :)" })
   } catch (error) {
     res.status(400).json({ data: "Oops something went wrong while placing your order :0" })
