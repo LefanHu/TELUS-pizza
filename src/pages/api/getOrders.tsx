@@ -14,14 +14,9 @@ export default async function handler(
   res: NextApiResponse<ResponseData>
 ) {
   const { method } = req
-  const customer = req.body
-  // console.log('body: ', order)
+  const { customerName, phoneNumber } = req.query
 
-  // invalid phone number
-  if (isNaN(customer.phoneNumber)) {
-    return res.json({ data: "Error! Phone number is invalid" })
-  }
-
+  console.log(`${customerName} and ${phoneNumber}`)
   // place actual order / send to database
   if (method != 'GET') {
     return res.status(400).json({ data: "something is suspicious ;-;" })
@@ -29,18 +24,18 @@ export default async function handler(
 
   try {
     const result = await dbConnect();
-    console.log(`database connected!!${result}`)
+    console.log(`now getting stuff from database!!${result}`)
 
+    // console.log(`${customerName} and ${phoneNumber}`)
     // fetch orders
-    const orders = Customer.findOne({
-      'customerName': customer.customerName.toLowerCase(),
-      'phoneNumber': customer.phoneNumber,
-    }, 'placedOrders')
-
+    const orders = await Customer.findOne({
+      'customerName': customerName,
+      'phoneNumber': Number(phoneNumber),
+    }).select({ placedOrders: 1, _id: 0})
+    
     console.log(orders)
-
     res.status(200).json({
-      data: "request went through!",
+      data: JSON.stringify(orders)
     })
   } catch (error) {
     res.status(400).json({ data: "Oops something went wrong while placing your order :0" })
