@@ -24,8 +24,9 @@ export default function ViewOrdersPage() {
     })
 
     // Get the response data from server as JSON.
-    const order_ids = await response.json()
-    alert(`here's your order_ids ${order_ids.data} or just raw data: ${order_ids}`)
+    const orders = await response.json()
+    console.log(JSON.parse(orders.data))
+    // alert(`here's your orders ${orders.data} or just one of them: ${orders.data.placedOrders[0]}`)
   }
   return (
     <div className="container">
