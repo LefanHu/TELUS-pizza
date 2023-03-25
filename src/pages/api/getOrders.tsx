@@ -28,14 +28,22 @@ export default async function handler(
 
     // console.log(`${customerName} and ${phoneNumber}`)
     // fetch orders
-    const orders = await Customer.findOne({
+    const order_ids = await Customer.findOne({
       'customerName': customerName,
       'phoneNumber': Number(phoneNumber),
     }).select({ placedOrders: 1, _id: 0})
-    
+    console.log(order_ids)
+
+    // get actual orders with order_ids
+    const orders = await PlacedOrder.find(
+      {_id: {$in: order_ids?.placedOrders}}
+    )
+
     console.log(orders)
+    
+    
     res.status(200).json({
-      data: JSON.stringify(orders)
+      data: JSON.stringify(order_ids)
     })
   } catch (error) {
     res.status(400).json({ data: "Oops something went wrong while placing your order :0" })
