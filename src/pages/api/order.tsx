@@ -51,6 +51,9 @@ export default async function handler(
     const orderingCustomer = {
       'customerName': order.customerName,
       'phoneNumber': order.phoneNumber,
+      '$push': {
+        'placedOrders': placedOrder._id
+      }
     }
     const customer = await Customer.findOneAndUpdate(
       { 'customerName': order.customerName.toLowerCase() }, orderingCustomer,
@@ -60,7 +63,6 @@ export default async function handler(
         setDefaultsOnInsert: true
       }
     )
-    customer.placedOrders.push(placedOrder._id)
 
 
     console.log(placedOrder)
