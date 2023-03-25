@@ -19,7 +19,12 @@ export default function EmployeeInterfacePage() {
 
   useEffect(() => {
     async function fetchData() {
-      const params = new URLSearchParams();
+      const params = new URLSearchParams({ // return everything
+        customerName: "",
+        phoneNumber: "",
+        all: "true",
+      });
+
       const response = await fetch(`/api/getOrders?${params.toString()}`, {
         headers: {
           'Content-Type': 'application/json',
@@ -32,6 +37,7 @@ export default function EmployeeInterfacePage() {
     }
     fetchData();
   }, []);
+
 
   return (
     <div className="container">

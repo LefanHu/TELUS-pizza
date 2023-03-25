@@ -16,6 +16,7 @@ export default function ViewOrdersPage() {
     const params = new URLSearchParams({
       customerName: `${form.customer.value}`,
       phoneNumber: `${form.number.value}`,
+      all: "false"
     })
 
     const response = await fetch(`/api/getOrders?${params.toString()}`, {

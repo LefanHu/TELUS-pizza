@@ -14,7 +14,7 @@ export default async function handler(
   res: NextApiResponse<ResponseData>
 ) {
   const { method } = req
-  const { customerName, phoneNumber } = req.query
+  const { customerName, phoneNumber, all } = req.query
 
   console.log(`${customerName} and ${phoneNumber}`)
   // place actual order / send to database
@@ -25,13 +25,14 @@ export default async function handler(
   try {
     const result = await dbConnect();
     console.log(`now getting stuff from database!!${result}`)
-
     // console.log(`${customerName} and ${phoneNumber}`)
+
     // fetch orders
-    const order_ids = await Customer.findOne({
+    const query = (all == "true") ? {} : {
       'customerName': customerName,
       'phoneNumber': Number(phoneNumber),
-    }).select({ placedOrders: 1, _id: 0 })
+    };
+    const order_ids = await Customer.findOne(query).select({ placedOrders: 1, _id: 0 })
     console.log(order_ids)
 
     // get actual orders with order_ids
