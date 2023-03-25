@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 // import { ObjectId } from 'mongoose'
 import dbConnect from '../../../lib/dbConnect.js'
 import PlacedOrder from '../../../models/PlacedOrder.js'
+import Customer from '../../../models/Customers.js'
 
 
 type ResponseData = {
@@ -13,35 +14,61 @@ export default async function handler(
   res: NextApiResponse<ResponseData>
 ) {
   const { method } = req
-  const body = req.body
-  console.log('body: ', body)
+  const order = req.body
+  console.log('body: ', order)
 
   // form validation
   // more than 3 toppings
-  if (body.pineapples && body.mushrooms && body.pepperoni && body.olives) {
+  if (order.pineapples && order.mushrooms && order.pepperoni && order.olives) {
     return res.json({ data: "You can't choose more than 3 toppings >:(" })
   }
 
   // invalid delivery address
-  if (body.delivery && !body.address) {
+  if (order.delivery && !order.address) {
     return res.json({ data: "Error! You've selected delivery but didn't provide an address!" })
+  }
+
+  // invalid phone number
+  if (isNaN(order.phoneNumber)) {
+    return res.json({ data: "Error! Phone number you've entered contains more than just numbers!" })
   }
 
   // place actual order / send to database
   if (method != 'POST') {
     return res.status(400).json({ data: "something is suspicious ;-;" })
   }
-  const result = await dbConnect();
-  console.log(`database connected!!${result}`)
 
   try {
+    const result = await dbConnect();
+    console.log(`database connected!!${result}`)
+
+    // place order
     const placedOrder = await PlacedOrder.create(
-      req.body
+      order
     )
+
+    // check if customer has ordered before
+    const orderingCustomer = {
+      'customerName': order.customerName,
+      'phoneNumber': order.phoneNumber,
+    }
+    const customer = await Customer.findOneAndUpdate(
+      { 'customerName': order.customerName.toLowerCase() }, orderingCustomer,
+      {
+        upsert: true,
+        new: true,
+        setDefaultsOnInsert: true
+      }
+    )
+    customer.placedOrders.push(placedOrder._id)
+
+
     console.log(placedOrder)
+    console.log(customer)
     res.json({ data: "Order successfully placed! Thanks for ordering :)" })
   } catch (error) {
     res.status(400).json({ data: "Oops something went wrong while placing your order :0" })
+    console.log(error)
   }
 
 

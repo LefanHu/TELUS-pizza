@@ -2,13 +2,16 @@ import mongoose from "mongoose";
 
 const PlacedOrderSchema = new mongoose.Schema(
   {
-    customer: String,
-    customer_id: mongoose.Schema.Types.ObjectId,
-    contact: Number,
+    customerName: String,
+    phoneNumber: Number,
     address: String,
     delivery: Boolean,
     scheduledTime: String,
-    toppings: [String],
+    datetime: String,
+    mushrooms: Boolean,
+    pineapples: Boolean,
+    olives: Boolean,
+    pepperoni: Boolean,
   },
   {
     collection: "placedOrders",

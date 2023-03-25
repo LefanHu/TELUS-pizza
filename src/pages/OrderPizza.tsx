@@ -11,8 +11,8 @@ export default function PageWithJSbasedForm() {
 
     // Get data from the form.
     const data = {
-      name: form.customer.value as string,
-      phone: form.number.value as string,
+      customerName: form.customer.value as string,
+      phoneNumber: form.number.value as Number,
       pepperoni: form.pepperoni.checked as boolean,
       mushrooms: form.mushrooms.checked as boolean,
       pineapples: form.pineapples.checked as boolean,

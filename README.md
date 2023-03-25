@@ -35,5 +35,6 @@ Our employees would also need a web page that lists the user's name/phone number
 - [next.js documentation/guides](https://nextjs.org/docs/guides/building-forms)
 - [buiding forms with next.js](https://nextjs.org/docs/guides/building-forms)
 - [mongoose schema definition format](https://mongoosejs.com/docs/schematypes.html#)
+- [mongodb add users](https://www.mongodb.com/docs/v4.4/tutorial/create-users/)
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
