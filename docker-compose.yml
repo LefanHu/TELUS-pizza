@@ -1,0 +1,11 @@
+version: "2.1"
+services:
+  telus:
+    image: telus:latest
+    container_name: telus
+    restart: unless-stopped
+
+networks:
+  default:
+    name: swag
+    external: true
