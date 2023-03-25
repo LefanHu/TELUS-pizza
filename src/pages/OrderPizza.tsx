@@ -90,8 +90,8 @@ export default function PageWithJSbasedForm() {
         <label htmlFor="delivery">Delivery?</label>
         <input type="checkbox" id="delivery" name="delivery" />
 
-        <label htmlFor="address">Delivery Address</label>
-        <input type="text" id="address" name="address" required />
+        <label htmlFor="address">Delivery Address (If applicable)</label>
+        <input type="text" id="address" name="address" />
         <label htmlFor="datetime">Scheduled For</label>
         <input type="datetime-local" id="datetime" name="datetime" required />
 
