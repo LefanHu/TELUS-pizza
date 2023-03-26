@@ -54,7 +54,7 @@ export default async function handler(
       data: JSON.stringify(orders)
     })
   } catch (error) {
-    res.status(400).json({ data: "Oops something went wrong while placing your order :0" })
+    res.status(400).json({ data: "Oops something went wrong while retrieving your order information :0" })
     console.log(error)
   }
 

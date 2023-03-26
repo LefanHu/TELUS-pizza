@@ -12,6 +12,11 @@ be rejected :(
 - Orders can't be placed in the past (from point of view of container)
 - Same names with different phone numbers are different individuals
 
+## Reflections
+Really wanted a cleaner way to deal with toppings that isn't just 3 booleans :(
+
+Due to my unfamiliarity with html, I was unable to get the form inputs to work properly...
+
 ## Technology Stack
 
 **MongoDB:**
@@ -30,6 +35,48 @@ be rejected :(
 **SWAGGER:**
 - Reverse proxies web-app through my domain (lefan.me)
 - Runs in docker container and shares a network with MongoDB and web-app
+
+Below is my swagger proxy-conf:
+```yaml
+# telus.subdomain.conf
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+
+    server_name telus.*;
+
+    include /config/nginx/ssl.conf;
+
+    client_max_body_size 0;
+    proxy_redirect off;
+    proxy_buffering off;
+
+    # enable for ldap auth, fill in ldap details in ldap.conf
+    #include /config/nginx/ldap.conf;
+
+    # enable for Authelia
+    # include /config/nginx/authelia-server.conf;
+    location / {
+        # enable the next two lines for http auth
+        # auth_basic "Restricted";
+        # auth_basic_user_file /config/nginx/.htpasswd;
+
+        # enable the next two lines for ldap auth
+        #auth_request /auth;
+        #error_page 401 =200 /ldaplogin;
+
+        # enable for Authelia
+        # include /config/nginx/authelia-location.conf;
+
+        include /config/nginx/proxy.conf;
+        include /config/nginx/resolver.conf;
+        set $upstream_app telus;
+        set $upstream_port 3000;
+        set $upstream_proto http;
+        proxy_pass $upstream_proto://$upstream_app:$upstream_port;
+    }
+}
+```
 
 
 ## Scenario Description
