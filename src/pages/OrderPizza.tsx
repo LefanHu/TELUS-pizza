@@ -22,7 +22,7 @@ export default function OrderPizzaPage() {
       scheduledTime: form.scheduledTime.value as string
     }
 
-    // console.log(data)
+    console.log(data)
 
     // Send the form data to our API and get a response.
     const response = await fetch('/api/order', {
@@ -91,8 +91,8 @@ export default function OrderPizzaPage() {
 
         <label htmlFor="address">Delivery Address (If applicable)</label>
         <input type="text" id="address" name="address" />
-        <label htmlFor="datetime">Scheduled For</label>
-        <input type="datetime-local" id="datetime" name="scheduledTime" required />
+        <label htmlFor="scheduledTime">Scheduled For</label>
+        <input type="datetime-local" id="scheduledTime" name="scheduledTime" required />
 
 
 

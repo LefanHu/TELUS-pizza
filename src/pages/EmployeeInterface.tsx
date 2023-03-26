@@ -47,7 +47,7 @@ export default function EmployeeInterfacePage() {
         <div>
           <h2>Orders:</h2>
           {ordersData.map((order) => (
-            <Collapsible key= {order._id} trigger={order.customerName}>
+            <Collapsible key={order._id} trigger={order.customerName + "   Phone number: " + order.phoneNumber}>
               <p>
                 Customer Name: {order.customerName}
                 Phone Number: {order.phoneNumber}
