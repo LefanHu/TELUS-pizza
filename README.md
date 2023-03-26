@@ -4,7 +4,7 @@ A dockerized version of the application is running at https://telus.lefan.me
 
 A mongoexpress interface for mongodb is running at https://mongoexpress.lefan.me
 
-**Disclaimer:**
+**Note:**
 Due to my docker container having a different default timezone that can't be changed with a regular environment variable, orders for pizzas a few hours into the future will
 be rejected :(
 
@@ -13,9 +13,10 @@ be rejected :(
 - Same names with different phone numbers are different individuals
 
 ## Reflections
-Really wanted a cleaner way to deal with toppings that isn't just 3 booleans :(
-
-Due to my unfamiliarity with html, I was unable to get the form inputs to work properly...
+- Really wanted a cleaner way to deal with toppings that isn't just 3 booleans :( Due to my unfamiliarity with html, I was unable to get the form inputs to work in the way I wanted...
+- Wasn't sure if I should check the length of phone numbers as there are certain numbers outside of the normal range
+- Could not for the life of me align the Name and Phone Number input boxes :(
+- Could have include extra considerations such as: Pizza size, payment type, etc.
 
 ## Technology Stack
 

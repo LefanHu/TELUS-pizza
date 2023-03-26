@@ -54,7 +54,7 @@ export default async function handler(
 
     // check if customer has ordered before
     const orderingCustomer = {
-      'customerName': order.customerName,
+      'customerName': order.customerName.toLowerCase(),
       'phoneNumber': order.phoneNumber,
       '$push': {
         'placedOrders': placedOrder._id
