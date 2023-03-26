@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Collapsible from 'react-collapsible';
+import styles from '../styles/Home.module.css'
 
 interface Order {
   _id: number,
@@ -47,12 +48,21 @@ export default function EmployeeInterfacePage() {
         <div>
           <h2>Orders:</h2>
           {ordersData.map((order) => (
-            <Collapsible key={order._id} trigger={order.customerName + "   Phone number: " + order.phoneNumber}>
-              <p>
+            <Collapsible className={styles.collapsible} key={order._id} trigger={order.customerName + "   Phone number: " + order.phoneNumber}>
+              <p className={styles.collapsible_p}>
                 Customer Name: {order.customerName}
+              </p>
+              <p className={styles.collapsible_p}>
                 Phone Number: {order.phoneNumber}
+              </p>
+              <p className={styles.collapsible_p}>
                 Delivery Address: {order.address}
+              </p>
+              <p className={styles.collapsible_p}>
                 Scheduled Delivery Time: {order.scheduledTime}
+              </p>
+              <p className={styles.collapsible_p}>
+                Toppings - Pepperoni: {order.pepperoni}  Black Olives: {order.olives}  Mushrooms: {order.mushrooms}  Pineapples: {order.pineapples}
               </p>
             </Collapsible>
           ))}
