@@ -64,10 +64,13 @@ export default function EmployeeInterfacePage() {
                 Phone Number: {order.phoneNumber}
               </p>
               <p className={styles.collapsible_p}>
+                Delivery: {(order.delivery)? "true" : "false"}
+              </p>
+              <p className={styles.collapsible_p}>
                 Delivery Address: {order.address}
               </p>
               <p className={styles.collapsible_p}>
-                Scheduled Delivery Time: {order.scheduledTime}
+                Scheduled Time: {order.scheduledTime}
               </p>
               <p className={styles.collapsible_p}>
                 Toppings:
