@@ -56,7 +56,7 @@ export default function OrderPizzaPage() {
           <label htmlFor="name">Name</label>
           <input type="text" id="name" name="customer" required />
           <label htmlFor="phone">Phone Number</label>
-          <input type="text" id="phone" name="number" required />
+          <input type="number" id="phone" name="number" required />
         </div>
 
         <fieldset style={{ marginBottom: "1rem", border: "none" }}>

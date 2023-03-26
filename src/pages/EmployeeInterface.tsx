@@ -38,10 +38,10 @@ export default function EmployeeInterfacePage() {
 
       // sorting orders
       orders.sort(function(a: Order, b: Order) {
-        // conver to date object
+        // convert to date object
         const a_date = Date.parse(a.scheduledTime)
         const b_date = Date.parse(b.scheduledTime)
-        return b_date - a_date;
+        return a_date - b_date;
       });
       setOrdersData(orders);
     }
@@ -56,7 +56,7 @@ export default function EmployeeInterfacePage() {
         <div>
           <h2>Orders:</h2>
           {ordersData.map((order) => (
-            <Collapsible className={styles.collapsible} key={order._id} trigger={"Customer: " + order.customerName + "   Phone number: " + order.phoneNumber + "SCHEDULED FOR: " + order.scheduledTime}>
+            <Collapsible className={styles.collapsible} key={order._id} trigger={"Name: " + order.customerName + "   Phone: " + order.phoneNumber + "  TIME: " + order.scheduledTime}>
               <p className={styles.collapsible_p}>
                 Customer Name: {order.customerName}
               </p>

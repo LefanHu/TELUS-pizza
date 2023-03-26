@@ -25,14 +25,22 @@ export default async function handler(
   try {
     const result = await dbConnect();
     console.log(`now getting stuff from database!!${result}`)
-    // console.log(`${customerName} and ${phoneNumber}`)
 
+    // console.log(`${customerName} and ${phoneNumber}`)
     // fetch orders
-    const query = (all == "true") ? {} : {
+    if (all == "true") {
+      const orders = await PlacedOrder.find()
+      console.log(orders)
+      return res.status(200).json({
+        data: JSON.stringify(orders)
+      })
+    }
+    
+    const query = {
       'customerName': customerName,
-      'phoneNumber': Number(phoneNumber),
-    };
-    const order_ids = await Customer.findOne(query).select({ placedOrders: 1, _id: 1 })
+      'phoneNumber': Number(phoneNumber)
+    }
+    const order_ids = await Customer.findOne(query).select({ placedOrders: 1, _id: 0 })
     console.log(order_ids)
 
     // get actual orders with order_ids
