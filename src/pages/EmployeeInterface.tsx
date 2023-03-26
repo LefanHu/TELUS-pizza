@@ -70,7 +70,11 @@ export default function EmployeeInterfacePage() {
                 Scheduled Delivery Time: {order.scheduledTime}
               </p>
               <p className={styles.collapsible_p}>
-                Toppings - Pepperoni: {order.pepperoni}  Black Olives: {order.olives}  Mushrooms: {order.mushrooms}  Pineapples: {order.pineapples}
+                Toppings:
+                {(order.pepperoni) ? "Pepperoni " : ""}
+                {(order.olives) ? "Black Olives " : ", "}
+                {(order.mushrooms) ? "Mushrooms " : ", "}
+                {(order.pineapples) ? "Pineapples " : ""}
               </p>
             </Collapsible>
           ))}

@@ -33,6 +33,11 @@ export default async function handler(
     return res.json({ data: "Error! Phone number you've entered contains more than just numbers!" })
   }
 
+  // invalid date / time traveler
+  if (Date.parse(order.scheduledTime) < Date.now()) {
+    return res.json({ data: "Error! Do you have a time machine? This order is for the past!" })
+  }
+
   // place actual order / send to database
   if (method != 'POST') {
     return res.status(400).json({ data: "something is suspicious ;-;" })
@@ -56,7 +61,10 @@ export default async function handler(
       }
     }
     const customer = await Customer.findOneAndUpdate(
-      { 'customerName': order.customerName.toLowerCase() }, orderingCustomer,
+      {
+        'customerName': order.customerName.toLowerCase(),
+        'phoneNumber': order.phoneNumber
+      }, orderingCustomer,
       {
         upsert: true,
         new: true,
