@@ -17,7 +17,7 @@ export default function IndexPage() {
         </h1>
 
         <div style={{ width: 'vw', height: 'vh' }}>
-          <Image src="pizza.jpg" alt="pizza image" width={1050} height={850} unoptimized></Image>
+          <Image src="pizza.jpeg" alt="pizza image" width={1000} height={500} unoptimized></Image>
         </div>
 
         {/* <p className={styles.description}> */}
