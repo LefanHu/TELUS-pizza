@@ -7,7 +7,6 @@ const PlacedOrderSchema = new mongoose.Schema(
     address: String,
     delivery: Boolean,
     scheduledTime: String,
-    datetime: String,
     mushrooms: Boolean,
     pineapples: Boolean,
     olives: Boolean,

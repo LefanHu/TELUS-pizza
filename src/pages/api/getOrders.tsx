@@ -32,7 +32,7 @@ export default async function handler(
       'customerName': customerName,
       'phoneNumber': Number(phoneNumber),
     };
-    const order_ids = await Customer.findOne(query).select({ placedOrders: 1, _id: 0 })
+    const order_ids = await Customer.findOne(query).select({ placedOrders: 1, _id: 1 })
     console.log(order_ids)
 
     // get actual orders with order_ids

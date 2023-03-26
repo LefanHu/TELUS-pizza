@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import Collapsible from 'react-collapsible';
 
 interface Order {
+  _id: number,
   customerName: string,
   phoneNumber: number,
   address: string,
   delivery: boolean,
   scheduledTime: string,
-  datetime: string,
   mushrooms: boolean,
   pineapples: boolean,
   olives: boolean,
@@ -47,12 +47,12 @@ export default function EmployeeInterfacePage() {
         <div>
           <h2>Orders:</h2>
           {ordersData.map((order) => (
-            <Collapsible trigger={order.customerName}>
+            <Collapsible key= {order._id} trigger={order.customerName}>
               <p>
                 Customer Name: {order.customerName}
                 Phone Number: {order.phoneNumber}
                 Delivery Address: {order.address}
-                Scheduled Delivery Time: {order.datetime}
+                Scheduled Delivery Time: {order.scheduledTime}
               </p>
             </Collapsible>
           ))}

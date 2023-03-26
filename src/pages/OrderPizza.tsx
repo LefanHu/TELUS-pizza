@@ -19,7 +19,7 @@ export default function OrderPizzaPage() {
       olives: form.olives.checked as boolean,
       delivery: form.delivery.checked as boolean,
       address: form.address.value as string,
-      datetime: form.datetime.value as string
+      scheduledTime: form.scheduledTime.value as string
     }
 
     // console.log(data)
@@ -92,7 +92,7 @@ export default function OrderPizzaPage() {
         <label htmlFor="address">Delivery Address (If applicable)</label>
         <input type="text" id="address" name="address" />
         <label htmlFor="datetime">Scheduled For</label>
-        <input type="datetime-local" id="datetime" name="datetime" required />
+        <input type="datetime-local" id="datetime" name="scheduledTime" required />
 
 
 
