@@ -8,6 +8,18 @@ A mongoexpress interface for mongodb is running at https://mongoexpress.lefan.me
 Due to my docker container having a different default timezone that can't be changed with a regular environment variable, orders for pizzas a few hours into the future will
 be rejected :(
 
+## Files
+
+Written from scratch:
+- src/pages/api/*
+- src/pages/*
+- docker-compose.yml
+- models/*
+
+Existing examples from Next.js Documentation:
+- Dockerfile
+- lib/dbConnect.js
+
 ## Assumptions
 - Orders can't be placed in the past (from point of view of container)
 - Same names with different phone numbers are different individuals
